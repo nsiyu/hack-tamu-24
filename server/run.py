@@ -5,7 +5,7 @@ from flask_restx import Api
 
 
 app = Flask(__name__)
-api = Api(title='Team 7 API', version='1.0', description='API Documentation')
+api = Api(title='HackTamu API', version='1.0', description='API Documentation')
 CORS(app)
 SetupRoutes(app, api)
 

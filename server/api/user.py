@@ -7,8 +7,6 @@ user_api = Namespace('users', description='User operations')
 user_model = user_api.model('User', {
     'username': fields.String(required=True, description='User username'),
     'password': fields.String(required=True, description='User password'),
-    'email': fields.String(required=True, description='User email'),
-    'state': fields.String(required=True, description='User state'),
 })
 
 @user_api.route('/signup')
