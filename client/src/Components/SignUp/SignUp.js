@@ -3,6 +3,7 @@ import { Button, Input } from "antd";
 import "./SignUp.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import companyLogo from './OIG.png'; // Logo image import
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,9 @@ const SignUpPage = () => {
 
   return (
     <div className="signup-page">
+      <div className="logo-container" style={{ textAlign: 'center' }}> {/* Centered logo container */}
+        <img src={companyLogo} alt="Company Logo" style={{ height: '100px' }} /> {/* Logo image */}
+      </div>
       <div className="welcome-message">
         <h1>Let's Get Started!</h1>
         <p>Create an Account</p>
@@ -72,7 +76,7 @@ const SignUpPage = () => {
       <div className="sign-up-link">
         <p>
           Already have an account?{" "}
-          <a onClick={() => navigate("/login")} style={{ color: "#aaa" }}>
+          <a onClick={() => navigate("/")} style={{ color: "#aaa" }}>
             Sign in
           </a>
         </p>
