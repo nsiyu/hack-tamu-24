@@ -4,6 +4,8 @@ import AddFlightModal from "./AddFlightModal";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FlightList from "./FlightList";
+import RouterButton from "./RouterButton";
+import PageTitle from "./PageTitle";
 
 const MyFlightsPage = ({ onFlightClick }) => {
   const [isModalOpen, setModalIsOpen] = useState(false);
@@ -22,7 +24,7 @@ const MyFlightsPage = ({ onFlightClick }) => {
         },
       })
       .then((res) => {
-        setFlights(res.data);
+        setFlights(res.data.flights);
       })
       .catch((err) => {
         console.log(err);
@@ -54,14 +56,11 @@ const MyFlightsPage = ({ onFlightClick }) => {
         flightNumber={flightNumber}
         setFlightNumber={setFlightNumber}
       />
-      <Flex
-        //style={{ maxHeight: "50px", width: "100%", padding: "10px 20px" }}
-        align="center"
-        justify="space-between"
-      >
-        <div style={{ color: "white", fontSize: "24px", fontWeight: "bold" }}>
-          My Flights
-        </div>
+      <Flex align="center" justify="space-between">
+        <Flex gap={10} align="center">
+          <PageTitle title="My Flights" />
+          <RouterButton />
+        </Flex>
         <Button
           type="primary"
           shape="circle"
@@ -69,7 +68,7 @@ const MyFlightsPage = ({ onFlightClick }) => {
           onClick={() => setModalIsOpen(true)}
         />
       </Flex>
-      <FlightList onClick={onFlightClick} />
+      <FlightList onClick={onFlightClick} flights={flights} />
     </Flex>
   );
 };
