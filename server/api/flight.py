@@ -43,7 +43,7 @@ class GetFlightResource(Resource):
             flight_iata = ''.join(filter(str.isalpha, flight_id))
             flight_number = ''.join(filter(str.isdigit, flight_id))
 
-            aviation_api_url = f'http://api.aviationstack.com/v1/flights?access_key=asfas&flight_number={flight_number}&airline_iata={flight_iata}'
+            aviation_api_url = f'http://api.aviationstack.com/v1/flights?access_key=689292887ba553a4fa0c4a56e93e5f35&flight_number={flight_number}&airline_iata={flight_iata}'
             try:
                 aviation_api_response = requests.get(aviation_api_url).json()
                 print(aviation_api_response)
