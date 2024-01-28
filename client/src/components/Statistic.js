@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Statistic, Card, Flex, Image } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Content } from "antd/es/layout/layout";
+import axios from "axios";
 const { Countdown } = Statistic;
 const onChange = (val) => {
   if (typeof val === "number" && 4.95 * 1000 < val && val < 5 * 1000) {
@@ -10,7 +11,26 @@ const onChange = (val) => {
 };
 
 const Statistics = () => {
-  return (
+    const [flightDetails, setFlightDetails] = useState(null);
+    const [delayMinutes, setDelayMinutes] = useState(0);
+    const [distance, setDistance] = useState(0);
+    const [numFlights, setNumFlights] = useState(0);
+
+  const getFlightDetails = (userId) => {
+      axios.get(`http://127.0.0.1/users/passport-data?user_id=${userId}`)
+      .then(response => {
+        setFlightDetails(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching flight details:', error);
+      });
+  };
+
+  useEffect(() => {
+      getFlightDetails()
+  })
+
+    return (
     <Flex vertical={"horizontal"} style={{ flexGrow: 1, marginTop: "22px" }}>
       <Content>
         <Card
@@ -34,13 +54,12 @@ const Statistics = () => {
           <Flex vertical>
             <Statistic
               title={<span style={{ fontSize: "40px" }}>FLIGHTS</span>}
-              value={67}
+              value={numFlights}
               valueStyle={{ fontSize: "30px" }}
             />
 
-            <Statistic title="DISTANCE" value={54380} suffix="mi" />
+            <Statistic title="DISTANCE" value={distance} suffix="mi" />
             <Statistic title="Around the World" value={2.18} suffix="x" />
-            <Button type="primary">View More</Button>
           </Flex>
         </Card>
       </Content>
@@ -74,7 +93,6 @@ const Statistics = () => {
                 Boeing 777-300
               </Content>
             </Flex>
-            <Button type="primary">View More</Button>
           </Flex>
         </Card>
       </Content>
@@ -98,10 +116,9 @@ const Statistics = () => {
             ></Button>
           </Flex>
           <Flex vertical>
-            <Statistic value={1342} />
+            <Statistic value={delayMinutes} />
             <Content style={{ fontSize: "30px" }}>Minutes Lost</Content>
             <Content style={{ fontSize: "22px" }}>From Delay</Content>
-            <Button type="primary">View More</Button>
           </Flex>
         </Card>
       </Content>
