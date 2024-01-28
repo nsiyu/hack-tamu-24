@@ -1,27 +1,32 @@
-import { Flex } from "antd";
+import { ConfigProvider, theme, Flex } from "antd";
 import "./App.css";
 import FlightGlobe from "./components/FlightGlobe";
-import Title from "antd/es/typography/Title";
+import MyFlightsPage from "./components/MyFlightsPage";
 
 function App() {
+  const { darkAlgorithm } = theme;
   return (
     <>
-      <FlightGlobe />
-      <Flex
-        style={{
-          backgroundColor: "#232323",
-          position: "absolute",
-          top: "50%",
-          height: "calc(100% - 50%)",
-          width: "100%",
-          borderTopLeftRadius: "10px",
-          borderTopRightRadius: "10px",
+      <ConfigProvider
+        theme={{
+          algorithm: darkAlgorithm,
         }}
       >
-        <Title level={2} style={{ color: "white", padding: "0px 20px" }}>
-          My Flights
-        </Title>
-      </Flex>
+        <FlightGlobe />
+        <Flex
+          style={{
+            backgroundColor: "#232323",
+            position: "absolute",
+            top: "50%",
+            height: "calc(100% - 50%)",
+            width: "100%",
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+          }}
+        >
+          <MyFlightsPage />
+        </Flex>
+      </ConfigProvider>
     </>
   );
 }
