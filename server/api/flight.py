@@ -37,7 +37,6 @@ class GetFlightResource(Resource):
         user_id = request.args.get('user_id')
         flights_cursor = db.flight.find({'user_id': user_id})
         flights = list(flights_cursor)
-
         res = []
         for flight in flights:
             flight_id = flight['flight_id']
