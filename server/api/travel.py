@@ -4,7 +4,7 @@ import requests
 import json
 from openai import OpenAI
 
-client = OpenAI(api_key='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')
+client = OpenAI(api_key='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')
 
 # Assuming you have set up the namespace and other imports as before
 
@@ -24,7 +24,7 @@ class GenerateItineraryResource(Resource):
         data = request.get_json()
         destination = data['destination']
 
-        prompt = f"Create a list of specific food recommendations and locations to visit in {destination}. Format the response as 'food:[list]' each item should have the price rating ($, $$, $$$) and address and ratings."
+        prompt = f"Create a list of specific food recommendations and locations to visit in {destination}. Format the response as 'food:[list]' each item should have the price rating ($, $$, $$$) and address and ratings. And also 'destionation:[list]' each item should have the"
 
         gpt_response = client.chat.completions.create(
             model="gpt-3.5-turbo-1106",
@@ -36,28 +36,6 @@ class GenerateItineraryResource(Resource):
 
         if gpt_response:
             itinerary = gpt_response.choices[0].message.content
-            restraunts = parse_itinerary(itinerary)
             return {'itinerary': itinerary}, 200
         else:
             return {'message': 'Error generating itinerary'}, 404
-
-
-def parse_itinerary(itinerary_text):
-    restaurants = []
-    lines = itinerary_text.split('\n')
-    current_restaurant = {}
-
-    for line in lines:
-        if line.startswith('- '):  # New restaurant
-            if current_restaurant:
-                restaurants.append(current_restaurant)
-            current_restaurant = {'name': line[2:].split(' (')[0]}
-        elif 'Address:' in line:
-            current_restaurant['address'] = line.split('Address: ')[1]
-        elif 'Rating:' in line:
-            current_restaurant['rating'] = line.split('Rating: ')[1]
-
-    if current_restaurant:
-        restaurants.append(current_restaurant)
-
-    return restaurants
