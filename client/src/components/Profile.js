@@ -41,7 +41,7 @@ const Profile = () => {
             >
               <Flex justify="space-between">
                 <div style={{ display: "flex", alignItems: "left" }}>
-                  Name
+                  Licker Dog
                 </div>
 
                 <Button shape="circle" icon={<CloseOutlined />} />
