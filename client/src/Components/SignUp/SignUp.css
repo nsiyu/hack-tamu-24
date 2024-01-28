@@ -1,0 +1,65 @@
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #141820; /* Dark gray background color */
+  color: #fff; /* Text color */
+}
+
+.welcome-message {
+  text-align: center;
+  margin-bottom: 20px; /* Reduce the margin for a tighter spacing */
+}
+
+.input-container {
+  margin-bottom: 20px; /* Reduce the margin for a tighter spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-field {
+  width: 350px;
+  height: 55px;
+  margin-bottom: 15px;
+  background-color: #222733; /* Light gray input box */
+  border: 1px solid #141820; /* Add a border for clarity */
+  border-radius: 20px; /* Increased rounded corners for a more rounded look */
+  padding: 10px; /* Add some padding for spacing within the text boxes */
+  color: #000000; /* Text color */
+}
+
+.input-field::placeholder,
+.ant-input-password::placeholder {
+  color: #aaaaaa !important; /* Placeholder text color */
+}
+
+.forgot-password-link {
+  text-align: right;
+  margin-left: 225px; /* Adjust the left margin as needed */
+  font-size: 12px; /* Adjust the font size for the "Forgot Password?" text */
+  color: #aaa;
+  margin-top: -5px; /* Adjust the margin-top to move the text up more */
+  cursor: pointer;
+}
+
+
+
+.ant-btn {
+  margin-top: 20px;
+  width: 350px; /* Set the width of the button to match the input boxes */
+  height: 55px; /* Set the height of the button */
+  background-color: #1890ff; /* Blue button color */
+  border-color: #1890ff;
+  border-radius: 20px; /* Increased rounded corners for a more rounded look */
+}
+
+.sign-up-link {
+  margin-top: 10px; /* Adjust the margin-top to move the text up more */
+}
+
+.sign-up-link a {
+  color: #aaa; /* Text color for the link */
+}
