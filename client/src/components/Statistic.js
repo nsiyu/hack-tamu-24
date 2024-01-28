@@ -1,41 +1,12 @@
-import React from "react";
-import { Button, Flex, Radio } from "antd";
-import { Card, Avatar, Statistic, Row, Col } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import React from 'react'
+import { Button, Statistic,Card,Flex } from 'antd'
+import { UploadOutlined } from '@ant-design/icons'
 import { Content } from "antd/es/layout/layout";
 
-const PersonalStat = () => {
-  return (
-    <Content >
-      <Flex vertical justify="center" style={{paddingTop:'22px' ,margin: "0px" ,}}>
-        <Flex style={{ flexGrow: 1 }}>
-          <Button
-            type="primary"
-            shape="round"
-            size="small"
-            
-          >
-            All-Flights
-          </Button>
-          <Button
-            type="primary"
-            shape="round"
-            size="small"
-            style={{  marginLeft: "4px" }}
-          >
-            2024
-          </Button>
-          <Button
-            type="primary"
-            shape="round"
-            size="small"
-            style={{  marginLeft: "4px" }}
-          >
-            2023
-          </Button>
-        </Flex>
 
-        <Flex
+const Statistics = () => {
+  return (
+    <Flex
           vertical={"horizontal"}
           style={{ flexGrow: 1, marginTop: "22px" }}
         >
@@ -50,8 +21,8 @@ const PersonalStat = () => {
                   "linear-gradient(0deg, rgb(200, 200, 200), transparent)",
               }}
             >
-              <Flex justify="space-between" style={{ fontSize: "22px" }}>
-                <Content>Your Flight Status</Content>
+              <Flex justify="space-between" >
+                <Content style={{ fontSize: "24px" }}>Your Flight Status</Content>
                 <Button
                   type="primary"
                   icon={<UploadOutlined />}
@@ -104,9 +75,7 @@ const PersonalStat = () => {
             </Card>
           </Content>
         </Flex>
-      </Flex>
-    </Content>
-  );
-};
+  )
+}
 
-export default PersonalStat;
+export default Statistics

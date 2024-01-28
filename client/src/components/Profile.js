@@ -1,13 +1,11 @@
 import React from "react";
-import { Avatar, Space } from "antd";
-import { useState, useEffect } from "react";
-import { Button, Flex, Segmented } from "antd";
+import { Avatar,  } from "antd";
+import { Button, Flex, Layout } from "antd";
 import {
   UsergroupDeleteOutlined,
   CloseOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Content } from "antd/es/layout/layout";
 
 const url = "https://www.svgrepo.com/show/140005/dog.svg";
 const boxStyle = {
@@ -16,12 +14,10 @@ const boxStyle = {
 };
 
 const Profile = () => {
-  const [name, setName] = useState("Licker Dog");
-
   return (
-    <Content style={{border: 'none', outline: 'none'}}>
-     
-      <Content  style={{ paddingTop: "28px" }}>
+    
+    <div>
+      <div  style={{ paddingTop: "28px" }}>
         <Flex style={boxStyle} justify="space-between" align="flex-start, ">
           <Flex style={{ width: "100%", display: "flex" }}>
             <Avatar
@@ -32,7 +28,7 @@ const Profile = () => {
                 height: "50px",
               }}
             />
-            <Content
+            <div
               style={{
                 width: "100%",
                 flexGrow: 1,
@@ -44,13 +40,13 @@ const Profile = () => {
               }}
             >
               <Flex justify="space-between">
-                <Content style={{ display: "flex", alignItems: "left" }}>
-                  {name}
-                </Content>
+                <div style={{ display: "flex", alignItems: "left" }}>
+                  Name
+                </div>
 
                 <Button shape="circle" icon={<CloseOutlined />} />
               </Flex>
-              <Content
+              <div
                 style={{
                   display: "flex",
                   alignItems: "left",
@@ -58,12 +54,12 @@ const Profile = () => {
                 }}
               >
                 My Flight log
-              </Content>
-            </Content>
+              </div>
+            </div>
           </Flex>
         </Flex>
 
-        <Content style={{ marginTop: "12px", paddingBottom: "12px" ,}}>
+        <div style={{ marginTop: "12px", paddingBottom: "12px" ,}}>
           <Flex justify="space-start" align="flex-start">
             <Button
               type="default"
@@ -83,9 +79,9 @@ const Profile = () => {
               Settings
             </Button>
           </Flex>
-        </Content>
-      </Content>
-    </Content>
+        </div>
+      </div>
+    </div>
   );
 };
 
