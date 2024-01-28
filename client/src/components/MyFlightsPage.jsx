@@ -20,7 +20,7 @@ const MyFlightsPage = ({ onFlightClick }) => {
     axios
       .get("http://127.0.0.1:5000/flights/get-flights", {
         params: {
-          user_id: "joe",
+          user_id: localStorage.getItem("user"),
         },
       })
       .then((res) => {
@@ -35,7 +35,7 @@ const MyFlightsPage = ({ onFlightClick }) => {
     axios
       .post("http://127.0.0.1:5000/flights/add-flight", {
         flight_id: flightNumber,
-        user_id: "joe",
+        user_id: localStorage.getItem("user"),
       })
       .then((res) => {
         console.log(res.data);

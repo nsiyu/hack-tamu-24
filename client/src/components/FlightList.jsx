@@ -47,6 +47,11 @@ const FlightList = ({ onClick, flights }) => {
         </Flex>
       </Drawer>
       <Flex vertical style={{ marginTop: "20px" }}>
+        {flights.length === 0 ? (
+          <Flex justify="center" style={{ color: "white", marginTop: "20px" }}>
+            No flights to display
+          </Flex>
+        ) : undefined}
         {flights.map((flight) => (
           <Flex
             style={{

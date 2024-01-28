@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Statistic, Card, Flex, Image } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Content } from "antd/es/layout/layout";
@@ -11,30 +11,35 @@ const onChange = (val) => {
 };
 
 const Statistics = () => {
-    const [flightDetails, setFlightDetails] = useState(null);
-    const [delayMinutes, setDelayMinutes] = useState(0);
-    const [distance, setDistance] = useState(0);
-    const [numFlights, setNumFlights] = useState(0);
+  const [flightDetails, setFlightDetails] = useState(null);
+  const [delayMinutes, setDelayMinutes] = useState(0);
+  const [distance, setDistance] = useState(0);
+  const [numFlights, setNumFlights] = useState(0);
 
   const getFlightDetails = (userId) => {
-      axios.get(`http://127.0.0.1:5000/users/passport-data?user_id=joe`)
-      .then(response => {
-          console.log(response.data)
+    axios
+      .get(
+        `http://127.0.0.1:5000/users/passport-data?user_id=${localStorage.getItem(
+          "user"
+        )}`
+      )
+      .then((response) => {
+        console.log(response.data);
         setFlightDetails(response.data);
-          setNumFlights(response.data.number_of_flights)
-          setDistance(response.data.distance_traveled)
-          setDelayMinutes(response.data.time_lost_due_to_delays)
+        setNumFlights(response.data.number_of_flights);
+        setDistance(response.data.distance_traveled);
+        setDelayMinutes(response.data.time_lost_due_to_delays);
       })
-      .catch(error => {
-        console.error('Error fetching flight details:', error);
+      .catch((error) => {
+        console.error("Error fetching flight details:", error);
       });
   };
 
   useEffect(() => {
-      getFlightDetails()
-  }, [])
+    getFlightDetails();
+  }, []);
 
-    return (
+  return (
     <Flex vertical={"horizontal"} style={{ flexGrow: 1, marginTop: "22px" }}>
       <Content>
         <Card
@@ -93,9 +98,7 @@ const Statistics = () => {
               src="https://upload.wikimedia.org/wikipedia/commons/4/43/Boeing-777.svg"
             />
             <Flex horizontal justify="center">
-              <Content style={{ fontSize: "24px" }}>
-                Boeing 777-300
-              </Content>
+              <Content style={{ fontSize: "24px" }}>Boeing 777-300</Content>
             </Flex>
           </Flex>
         </Card>

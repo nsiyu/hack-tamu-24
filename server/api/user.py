@@ -35,7 +35,7 @@ class SignupResource(Resource):
         fname = data['fname']
         lname = data['lname']
         db.user.insert_one({'email': email, 'password': password, 'fname': fname, 'lname': lname})
-        return Jsonify({'email': email}), 201
+        return {'email': email}, 201
 
 @user_api.route('/login')
 class LoginResource(Resource):
@@ -48,7 +48,7 @@ class LoginResource(Resource):
         password = data.get('password')
         user = db.user.find_one({'email': email, 'password': password})
         if user:
-            return {'message': 'Login successful'}, 200
+            return {"email": email}, 200
         else:
             return {'message': 'Invalid email or password'}, 401
 
