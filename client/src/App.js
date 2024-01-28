@@ -6,6 +6,8 @@ import Root from "./Root";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Welcome from "./components/welcome/welcome";
+import Profile from "./components/Profile";
+import Statistic from "antd/es/statistic/Statistic";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -50,6 +52,15 @@ function App() {
         <Route
           path="my-flights"
           element={<MyFlightsPage onFlightClick={handleFlightClick} />}
+        />
+        <Route
+          path="profile"
+          element={
+            <>
+              <Profile />
+              <Statistic />
+            </>
+          }
         />
       </Route>
     </Routes>
