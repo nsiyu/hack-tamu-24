@@ -2,6 +2,7 @@ import math
 import requests
 from flask_restx import Namespace, Resource, fields
 from server.db.database import get_db
+
 from flask import request, jsonify
 
 user_api = Namespace('users', description='User operations')
@@ -116,3 +117,4 @@ class PassportDataResource(Resource):
         }
 
         return passport_data, 200
+

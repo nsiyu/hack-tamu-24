@@ -5,7 +5,6 @@ import { Route, Routes } from "react-router-dom";
 import Root from "./Root";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
-import Welcome from "./components/welcome/welcome";
 import Profile from "./components/Profile";
 import Statistic from "./components/Statistic";
 import { Flex } from "antd";
@@ -13,6 +12,8 @@ import { Flex } from "antd";
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
   const [globeAnimations, setGlobeAnimations] = useState([]);
+
+
 
   const handleFlightClick = (flight) => {
     setGlobeMarkers([
@@ -41,8 +42,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Welcome />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route
         path="/app"

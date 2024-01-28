@@ -48,3 +48,9 @@
 .sign-up-link a {
   color: #aaa; /* Text color for the link */
 }
+
+.sign-in-btn {
+    background-color: black; /* Vibrant button color */
+    color: #ffffff; /* White text */
+    border: none; /* Remove border */
+}

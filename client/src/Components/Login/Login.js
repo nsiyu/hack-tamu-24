@@ -1,28 +1,34 @@
-// Login.js
-
 import React, { useState } from "react";
 import { Button, Input } from "antd";
 import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import companyLogo from './OIG.png';
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleLogin = () => {
-    axios
-      .post("http://127.0.0.1:5000/users/login", { email, password })
-      .then((response) => {
-        console.log("Login Success:", response.data);
-      })
-      .catch((error) => {
-        console.error("Login Error:", error);
-      });
-  };
+
+const handleLogin = () => {
+  axios
+    .post("http://127.0.0.1:5000/users/login", { email, password }, {
+    })
+    .then((response) => {
+        navigate("/app/my-flights")
+        localStorage.setItem("user", response.data.email);
+      console.log("Login Success:", response.data);
+    })
+    .catch((error) => {
+      console.error("Login Error:", error);
+    });
+};
 
   return (
     <div className="login-page">
+      <div className="logo-container">
+        <img src={companyLogo} alt="Company Logo" style={{ height: '100px', width: 125 }} /> {/* Logo image */}
+      </div>
       <div className="welcome-message">
         <h1>Welcome back!</h1>
         <p>Please sign into your account</p>
