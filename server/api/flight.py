@@ -3,6 +3,7 @@ from flask import request
 from server.db.database import get_db
 from bson import json_util
 from flask import Response
+import requests
 
 flight_api = Namespace('flights', description='User operations')
 
@@ -36,4 +37,49 @@ class GetFlightResource(Resource):
         user_id = request.args.get('user_id')
         flights_cursor = db.flight.find({'user_id': user_id})
         flights = list(flights_cursor)
-        return Response(json_util.dumps({'flights': flights}), mimetype='application/json')
+
+        res = []
+        for flight in flights:
+            flight_id = flight['flight_id']
+            flight_iata = ''.join(filter(str.isalpha, flight_id))
+            flight_number = ''.join(filter(str.isdigit, flight_id))
+            aviation_api_url = f'http://api.aviationstack.com/v1/flights?access_key=7d6bfda8c1ac3076eed6cf5e6fac6985&flight_number={flight_number}&airline_iata={flight_iata}'
+            try:
+                aviation_api_response = requests.get(aviation_api_url).json()
+                if not aviation_api_response or 'data' not in aviation_api_response or not aviation_api_response['data']:
+                    continue
+
+                flight_details = aviation_api_response['data'][0]
+                print(flight_details)
+                flight_info = {
+                    'flight_date': flight_details['flight_date'],
+                    'flight_status': flight_details['flight_status'],
+                    'departure_airport': flight_details['departure']['airport'],
+                    'departure_timezone': flight_details['departure']['timezone'],
+                    'departure_iata': flight_details['departure']['iata'],
+                    'departure_icao': flight_details['departure']['icao'],
+                    'departure_terminal': flight_details['departure']['terminal'],
+                    'departure_gate': flight_details['departure']['gate'],
+                    'departure_delay': flight_details['departure'].get('delay'),
+                    'scheduled_departure': flight_details['departure']['scheduled'],
+                    'estimated_departure': flight_details['departure']['estimated'],
+                    'arrival_airport': flight_details['arrival']['airport'],
+                    'arrival_timezone': flight_details['arrival']['timezone'],
+                    'arrival_iata': flight_details['arrival']['iata'],
+                    'arrival_icao': flight_details['arrival']['icao'],
+                    'arrival_terminal': flight_details['arrival']['terminal'],
+                    'arrival_gate': flight_details['arrival']['gate'],
+                    'arrival_baggage': flight_details['arrival']['baggage'],
+                    'arrival_delay': flight_details['arrival'].get('delay'),
+                    'scheduled_arrival': flight_details['arrival']['scheduled'],
+                    'estimated_arrival': flight_details['arrival']['estimated'],
+                    'airline_name': flight_details['airline']['name'],
+                    'airline_iata': flight_details['airline']['iata'],
+                    'airline_icao': flight_details['airline']['icao'],
+                    'flight_number': flight_details['flight']['number']
+                }
+                res.append(flight_info)
+
+            except Exception as e:
+                print(f"Error occurred: {e}")
+        return Response(json_util.dumps({'flights': res}), mimetype='application/json')
