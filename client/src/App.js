@@ -9,6 +9,7 @@ import Welcome from "./components/welcome/welcome";
 import Profile from "./components/Profile";
 import Statistic from "./components/Statistic";
 import { Flex } from "antd";
+import InterestPage from "./components/InterestPage";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -63,6 +64,7 @@ function App() {
             </Flex>
           }
         />
+        <Route path="places-to-visit" element={<InterestPage />} />
       </Route>
     </Routes>
   );

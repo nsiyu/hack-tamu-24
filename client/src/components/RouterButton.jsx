@@ -19,8 +19,8 @@ const RouterButton = () => {
       key: "/app/profile",
     },
     {
-      label: "Book a flight",
-      key: "/app/book-a-flight",
+      label: "Places to visit",
+      key: "/app/places-to-visit",
     },
   ];
 
