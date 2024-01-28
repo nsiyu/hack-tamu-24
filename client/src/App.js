@@ -7,7 +7,8 @@ import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import Welcome from "./components/welcome/welcome";
 import Profile from "./components/Profile";
-import Statistic from "antd/es/statistic/Statistic";
+import Statistic from "./components/Statistic";
+import { Flex } from "antd";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -56,10 +57,10 @@ function App() {
         <Route
           path="profile"
           element={
-            <>
+            <Flex vertical style={{ width: "100%", padding: "0px 20px" }}>
               <Profile />
               <Statistic />
-            </>
+            </Flex>
           }
         />
       </Route>

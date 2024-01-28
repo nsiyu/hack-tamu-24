@@ -27,7 +27,7 @@ const Statistics = () => {
         console.log(response.data);
         setFlightDetails(response.data);
         setNumFlights(response.data.number_of_flights);
-        setDistance(response.data.distance_traveled);
+        setDistance(Math.trunc(response.data.distance_traveled));
         setDelayMinutes(response.data.time_lost_due_to_delays);
       })
       .catch((error) => {

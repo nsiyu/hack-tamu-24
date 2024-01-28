@@ -1,11 +1,12 @@
 import React from "react";
-import { Avatar,  } from "antd";
+import { Avatar } from "antd";
 import { Button, Flex, Layout } from "antd";
 import {
   UsergroupDeleteOutlined,
   CloseOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
+import RouterButton from "./RouterButton";
 
 const url = "https://www.svgrepo.com/show/140005/dog.svg";
 const boxStyle = {
@@ -15,9 +16,8 @@ const boxStyle = {
 
 const Profile = () => {
   return (
-    
     <div>
-      <div  style={{ paddingTop: "28px" }}>
+      <div style={{ paddingTop: "28px" }}>
         <Flex style={boxStyle} justify="space-between" align="flex-start, ">
           <Flex style={{ width: "100%", display: "flex" }}>
             <Avatar
@@ -40,17 +40,23 @@ const Profile = () => {
               }}
             >
               <Flex justify="space-between">
-                <div style={{ display: "flex", alignItems: "left" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "left",
+                    color: "white",
+                  }}
+                >
                   Licker Dog
                 </div>
-
-                <Button shape="circle" icon={<CloseOutlined />} />
+                <RouterButton />
               </Flex>
               <div
                 style={{
                   display: "flex",
                   alignItems: "left",
                   fontSize: "12px",
+                  color: "white",
                 }}
               >
                 My Flight log
@@ -59,7 +65,7 @@ const Profile = () => {
           </Flex>
         </Flex>
 
-        <div style={{ marginTop: "12px", paddingBottom: "12px" ,}}>
+        <div style={{ marginTop: "12px", paddingBottom: "12px" }}>
           <Flex justify="space-start" align="flex-start">
             <Button
               type="default"
