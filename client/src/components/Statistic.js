@@ -68,7 +68,7 @@ const Statistics = () => {
             />
 
             <Statistic title="DISTANCE" value={distance} suffix="mi" />
-            <Statistic title="Around the World" value={2.18} suffix="x" />
+            <Statistic title="Around the World" value={parseFloat((distance / 24901).toFixed(2))}  suffix="x" />
           </Flex>
         </Card>
       </Content>

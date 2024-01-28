@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Avatar } from "antd";
 import { Button, Flex, Layout } from "antd";
 import {
@@ -15,6 +15,7 @@ const boxStyle = {
 };
 
 const Profile = () => {
+    const [name, setName] = useState(localStorage.getItem("email"))
   return (
     <div>
       <div style={{ paddingTop: "28px" }}>
@@ -47,7 +48,7 @@ const Profile = () => {
                     color: "white",
                   }}
                 >
-                  Licker Dog
+                    joe
                 </div>
                 <RouterButton />
               </Flex>
