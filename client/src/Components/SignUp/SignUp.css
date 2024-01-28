@@ -28,7 +28,7 @@
   border: 1px solid #141820; /* Add a border for clarity */
   border-radius: 20px; /* Increased rounded corners for a more rounded look */
   padding: 10px; /* Add some padding for spacing within the text boxes */
-  color: #000000; /* Text color */
+  color: white; /* Change text color to white */
 }
 
 .input-field::placeholder,
