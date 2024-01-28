@@ -5,8 +5,14 @@ import MyFlightsPage from "./components/MyFlightsPage";
 import { useState } from "react";
 import Profile from  "./components/Profile";
 import Statistics from "./components/Statistic";
+<<<<<<< HEAD
+=======
+import SelectInterest from "./components/SelectInterest";
+import InterestPage from "./components/InterestPage";
+
+>>>>>>> 73274b7 (p)
 function App() {
-  const { darkAlgorithm } = theme;
+
 
   const [globeMarkers, setGlobeMarkers] = useState([]);
   const [globeAnimations, setGlobeAnimations] = useState([]);
@@ -40,12 +46,21 @@ function App() {
     <>
       <ConfigProvider
         theme={{
+<<<<<<< HEAD
           algorithm: darkAlgorithm,
         }}
       >
         <Card>
           <Statistics/>
         </Card>
+=======
+          algorithm: theme.defaultAlgorithm,
+        }}
+      >
+        <Card>
+          <InterestPage/>
+          </Card>
+>>>>>>> 73274b7 (p)
       </ConfigProvider>
     </>
   );

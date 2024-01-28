@@ -93,9 +93,7 @@ const Statistics = () => {
               src="https://upload.wikimedia.org/wikipedia/commons/4/43/Boeing-777.svg"
             />
             <Flex horizontal justify="center">
-              <Content style={{ fontSize: "24px" }}>
-                Boeing 777-300
-              </Content>
+              <Content style={{ fontSize: "24px" }}>Boeing 777-300</Content>
             </Flex>
           </Flex>
         </Card>
