@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.flight-card-hover:hover,
+.flight-card-hover:active {
+  cursor: pointer;
+  background-color: #161616;
+  transition: ease;
+  transition-duration: 500ms;
+  border-radius: 10px;
+}

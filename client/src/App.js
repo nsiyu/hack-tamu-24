@@ -2,9 +2,39 @@ import { ConfigProvider, theme, Flex } from "antd";
 import "./App.css";
 import FlightGlobe from "./components/FlightGlobe";
 import MyFlightsPage from "./components/MyFlightsPage";
+import { useState } from "react";
 
 function App() {
   const { darkAlgorithm } = theme;
+
+  const [globeMarkers, setGlobeMarkers] = useState([]);
+  const [globeAnimations, setGlobeAnimations] = useState([]);
+
+  const handleFlightClick = (flight) => {
+    setGlobeMarkers([
+      {
+        id: 1,
+        airport: flight.departure_iata,
+        coordinates: [flight.longitude_start, flight.latitude_start],
+        value: 30,
+      },
+      {
+        id: 2,
+        airport: flight.arrival_iata,
+        coordinates: [flight.longitude_end, flight.latitude_end],
+        value: 30,
+      },
+    ]);
+    setGlobeAnimations([
+      {
+        animationDuration: 3000,
+        coordinates: [flight.longitude_start, flight.latitude_start],
+        distanceRadiusScale: 2,
+        easingFunction: ["Linear", "None"],
+      },
+    ]);
+  };
+
   return (
     <>
       <ConfigProvider
@@ -12,7 +42,7 @@ function App() {
           algorithm: darkAlgorithm,
         }}
       >
-        <FlightGlobe />
+        <FlightGlobe markers={globeMarkers} animations={globeAnimations} />
         <Flex
           style={{
             backgroundColor: "#232323",
@@ -24,7 +54,7 @@ function App() {
             borderTopRightRadius: "10px",
           }}
         >
-          <MyFlightsPage />
+          <MyFlightsPage onFlightClick={handleFlightClick} />
         </Flex>
       </ConfigProvider>
     </>

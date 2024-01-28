@@ -22,7 +22,7 @@ const AddFlightModal = ({
       onCancel={handleCancel}
     >
       <Input
-        placeholder="Flight number (E.g. AA 2153)"
+        placeholder="Flight number (E.g. AA2153)"
         onChange={(e) => setFlightNumber(e.target.value)}
         value={flightNumber}
       />
