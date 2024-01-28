@@ -1,20 +1,23 @@
 // Login.js
 
-import React, {useState} from 'react';
-import { Button, Input } from 'antd';
-import './Login.css';
+import React, { useState } from "react";
+import { Button, Input } from "antd";
+import "./Login.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handleLogin = () => {
-    axios.post('http://127.0.0.1:5000/users/login', { email, password })
-      .then(response => {
-        console.log('Login Success:', response.data);
+    axios
+      .post("http://127.0.0.1:5000/users/login", { email, password })
+      .then((response) => {
+        console.log("Login Success:", response.data);
       })
-      .catch(error => {
-        console.error('Login Error:', error);
+      .catch((error) => {
+        console.error("Login Error:", error);
       });
   };
 
@@ -38,12 +41,23 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <p className="forgot-password-link">Forgot Password?</p>
-        <Button onClick={handleLogin} type="primary" shape="round" className="sign-in-btn" style={{ width: '350px' }}>
+        <Button
+          onClick={handleLogin}
+          type="primary"
+          shape="round"
+          className="sign-in-btn"
+          style={{ width: "350px" }}
+        >
           Sign in
         </Button>
       </div>
       <div className="sign-up-link">
-        <p>Don't have an account? <a href="/signup" style={{ color: '#aaa' }}>Sign up</a></p>
+        <p>
+          Don't have an account?{" "}
+          <a onClick={() => navigate("/signup")} style={{ color: "#aaa" }}>
+            Sign up
+          </a>
+        </p>
       </div>
     </div>
   );

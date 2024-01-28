@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Root from "./Root";
 import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
+import Welcome from "./components/welcome/welcome";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -36,14 +38,17 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/" element={<Welcome />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route
-        path="/"
+        path="/app"
         element={
-        <Login/>
+          <Root globeMarkers={globeMarkers} globeAnimations={globeAnimations} />
         }
       >
         <Route
-          path=""
+          path="my-flights"
           element={<MyFlightsPage onFlightClick={handleFlightClick} />}
         />
       </Route>

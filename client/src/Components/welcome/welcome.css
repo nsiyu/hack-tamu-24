@@ -26,8 +26,3 @@
   padding: 20px; /* Adjust padding as needed */
   box-sizing: border-box;
 }
-
-.ant-btn {
-  width: 180px; /* Adjust the width of the buttons as needed */
-  height: 60px; /* Adjust the height of the buttons as needed */
-}

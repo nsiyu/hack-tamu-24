@@ -12,15 +12,15 @@ const RouterButton = () => {
   const items = [
     {
       label: "My Flights",
-      key: "/",
+      key: "/app/my-flights",
     },
     {
       label: "Profile",
-      key: "/profile",
+      key: "/app/profile",
     },
     {
       label: "Book a flight",
-      key: "/book-a-flight",
+      key: "/app/book-a-flight",
     },
   ];
 
