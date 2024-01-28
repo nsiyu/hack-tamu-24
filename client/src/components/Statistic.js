@@ -17,9 +17,13 @@ const Statistics = () => {
     const [numFlights, setNumFlights] = useState(0);
 
   const getFlightDetails = (userId) => {
-      axios.get(`http://127.0.0.1/users/passport-data?user_id=${userId}`)
+      axios.get(`http://127.0.0.1:5000/users/passport-data?user_id=joe`)
       .then(response => {
+          console.log(response.data)
         setFlightDetails(response.data);
+          setNumFlights(response.data.number_of_flights)
+          setDistance(response.data.distance_traveled)
+          setDelayMinutes(response.data.time_lost_due_to_delays)
       })
       .catch(error => {
         console.error('Error fetching flight details:', error);
@@ -28,7 +32,7 @@ const Statistics = () => {
 
   useEffect(() => {
       getFlightDetails()
-  })
+  }, [])
 
     return (
     <Flex vertical={"horizontal"} style={{ flexGrow: 1, marginTop: "22px" }}>

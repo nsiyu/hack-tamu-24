@@ -1,9 +1,10 @@
-import { ConfigProvider, theme, Flex } from "antd";
+import { ConfigProvider, theme, Flex, Card } from "antd";
 import "./App.css";
 import FlightGlobe from "./components/FlightGlobe";
 import MyFlightsPage from "./components/MyFlightsPage";
 import { useState } from "react";
-
+import Profile from  "./components/Profile";
+import Statistics from "./components/Statistic";
 function App() {
   const { darkAlgorithm } = theme;
 
@@ -42,20 +43,9 @@ function App() {
           algorithm: darkAlgorithm,
         }}
       >
-        <FlightGlobe markers={globeMarkers} animations={globeAnimations} />
-        <Flex
-          style={{
-            backgroundColor: "#232323",
-            position: "absolute",
-            top: "50%",
-            height: "calc(100% - 50%)",
-            width: "100%",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
-          }}
-        >
-          <MyFlightsPage onFlightClick={handleFlightClick} />
-        </Flex>
+        <Card>
+          <Statistics/>
+        </Card>
       </ConfigProvider>
     </>
   );
