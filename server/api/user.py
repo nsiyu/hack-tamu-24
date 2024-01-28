@@ -35,7 +35,7 @@ class SignupResource(Resource):
         fname = data['fname']
         lname = data['lname']
         db.user.insert_one({'email': email, 'password': password, 'fname': fname, 'lname': lname})
-        return {'message': 'User registered successfully'}, 201
+        return Jsonify({'email': email}), 201
 
 @user_api.route('/login')
 class LoginResource(Resource):
