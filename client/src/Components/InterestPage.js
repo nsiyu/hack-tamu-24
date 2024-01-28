@@ -2,29 +2,26 @@ import React from "react";
 import SelectDate from "./SelectDate";
 import SelectInterest from "./SelectInterest";
 import { Layout, Flex } from "antd";
+import PageTitle from "./PageTitle";
+import RouterButton from "./RouterButton";
 
 const InterestPage = () => {
   return (
-    <div
-      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
-    >
-      <Layout
-        style={{
-          background: "transparent",
-          textAlign: "center",
-          fontSize: "36px",
-          marginBottom: "12px",
-          marginTop:"12px"
-        }}
+    <Flex vertical>
+      <Flex
+        vertical
+        style={{ overflow: "scroll", maxHeight: "100%", padding: "20px" }}
       >
-        Interest
-      </Layout>
-
-      <SelectInterest />
+        <Flex align="center" gap={10} style={{ marginBottom: "20px" }}>
+          <PageTitle title="Places to visit" />
+          <RouterButton />
+        </Flex>
+        <SelectInterest />
+      </Flex>
       <SelectDate
         style={{ marginTop: "auto", position: "sticky", bottom: 0 }}
       />
-    </div>
+    </Flex>
   );
 };
 
