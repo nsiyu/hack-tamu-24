@@ -43,14 +43,25 @@ class GetFlightResource(Resource):
             flight_id = flight['flight_id']
             flight_iata = ''.join(filter(str.isalpha, flight_id))
             flight_number = ''.join(filter(str.isdigit, flight_id))
+
             aviation_api_url = f'http://api.aviationstack.com/v1/flights?access_key=7d6bfda8c1ac3076eed6cf5e6fac6985&flight_number={flight_number}&airline_iata={flight_iata}'
             try:
                 aviation_api_response = requests.get(aviation_api_url).json()
+                print(aviation_api_response)
                 if not aviation_api_response or 'data' not in aviation_api_response or not aviation_api_response['data']:
                     continue
 
+                departure_airport = aviation_api_response['data'][0]['departure']['iata']
+                arrival_airport = aviation_api_response['data'][0]['arrival']['iata']
+                coordinates_api_from = f'https://api.checkwx.com/station/K{departure_airport.upper()}'
+                coordinates_api_to = f'https://api.checkwx.com/station/K{arrival_airport.upper()}'
+
+                coordinate_api_from_request = requests.get(coordinates_api_from, headers={'X-API-Key': 'f87f86d210de4a4eac6a49e7fc'}).json()
+                coordinate_api_to_request = requests.get(coordinates_api_to, headers={'X-API-Key': 'f87f86d210de4a4eac6a49e7fc'}).json()
+                departure_coordinates = coordinate_api_from_request['data'][0]['geometry']['coordinates']
+                arrival_coordinates = coordinate_api_to_request['data'][0]['geometry']['coordinates']
+
                 flight_details = aviation_api_response['data'][0]
-                print(flight_details)
                 flight_info = {
                     'flight_date': flight_details['flight_date'],
                     'flight_status': flight_details['flight_status'],
@@ -76,7 +87,11 @@ class GetFlightResource(Resource):
                     'airline_name': flight_details['airline']['name'],
                     'airline_iata': flight_details['airline']['iata'],
                     'airline_icao': flight_details['airline']['icao'],
-                    'flight_number': flight_details['flight']['number']
+                    'flight_number': flight_details['flight']['number'],
+                    'latitude_start': departure_coordinates[0],
+                    'latitude_end': arrival_coordinates[0],
+                    'longitude_start': departure_coordinates[1],
+                    'longitude_end': arrival_coordinates[1]
                 }
                 res.append(flight_info)
 
