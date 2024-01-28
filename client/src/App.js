@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+
+import Testing from "./components/Testing";
+import Profile from "./components/Profile";
+import PersonalStat from "./components/Personal_stat";
+import { ConfigProvider, theme, Button, Card } from "antd";
+import { useState,useEffect } from "react";
+import { Content } from "antd/es/layout/layout";
 
 function App() {
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const handleClick = () => {
+    setIsDarkMode((previousValue) => !previousValue);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider
+   theme={{
+    algorithm:  darkAlgorithm ,
+   }}>
+   <Card style={{ width:'101' }}>
+    
+    <Content
+        className="App"
+        style={{ backgroundColor: "white", minHeight: "100vh" }}
+      >
+        <Profile></Profile>
+        <PersonalStat> </PersonalStat>
+      </Content>
+   </Card>
+  </ConfigProvider>
+      
+    
   );
 }
 
