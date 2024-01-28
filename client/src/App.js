@@ -39,7 +39,7 @@ function App() {
       <Route
         path="/"
         element={
-          <Root globeMarkers={globeMarkers} globeAnimations={globeAnimations} />
+        <SignUp/>
         }
       >
         <Route
