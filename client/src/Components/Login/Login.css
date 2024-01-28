@@ -32,9 +32,6 @@
 }
 
 .input-field::placeholder,
-.ant-input-password::placeholder {
-  color: #aaaaaa !important; /* Placeholder text color */
-}
 
 .forgot-password-link {
   text-align: right;
@@ -43,17 +40,6 @@
   color: #aaa;
   margin-top: -5px; /* Adjust the margin-top to move the text up more */
   cursor: pointer;
-}
-
-
-
-.ant-btn {
-  margin-top: 20px;
-  width: 350px; /* Set the width of the button to match the input boxes */
-  height: 55px; /* Set the height of the button */
-  background-color: #1890ff; /* Blue button color */
-  border-color: #1890ff;
-  border-radius: 20px; /* Increased rounded corners for a more rounded look */
 }
 
 .sign-up-link {
