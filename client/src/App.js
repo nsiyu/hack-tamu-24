@@ -1,12 +1,10 @@
-import { ConfigProvider, theme, Flex } from "antd";
 import "./App.css";
-import FlightGlobe from "./components/FlightGlobe";
 import MyFlightsPage from "./components/MyFlightsPage";
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Root from "./Root";
 
 function App() {
-  const { darkAlgorithm } = theme;
-
   const [globeMarkers, setGlobeMarkers] = useState([]);
   const [globeAnimations, setGlobeAnimations] = useState([]);
 
@@ -36,28 +34,19 @@ function App() {
   };
 
   return (
-    <>
-      <ConfigProvider
-        theme={{
-          algorithm: darkAlgorithm,
-        }}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Root globeMarkers={globeMarkers} globeAnimations={globeAnimations} />
+        }
       >
-        <FlightGlobe markers={globeMarkers} animations={globeAnimations} />
-        <Flex
-          style={{
-            backgroundColor: "#232323",
-            position: "absolute",
-            top: "50%",
-            height: "calc(100% - 50%)",
-            width: "100%",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
-          }}
-        >
-          <MyFlightsPage onFlightClick={handleFlightClick} />
-        </Flex>
-      </ConfigProvider>
-    </>
+        <Route
+          path=""
+          element={<MyFlightsPage onFlightClick={handleFlightClick} />}
+        />
+      </Route>
+    </Routes>
   );
 }
 
