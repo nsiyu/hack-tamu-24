@@ -12,9 +12,11 @@ const Root = ({ globeMarkers, globeAnimations }) => {
           position: "absolute",
           top: "50%",
           height: "calc(100% - 50%)",
+          maxHeight: "calc(100% - 50%)",
           width: "100%",
           borderTopLeftRadius: "10px",
           borderTopRightRadius: "10px",
+          overflow: "scroll",
         }}
       >
         <Outlet />

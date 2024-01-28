@@ -32,7 +32,7 @@ const FlightGlobe = ({ markers, animations }) => {
         }}
         cameraOptions={{
           enableZoom: true,
-          enableAutoRotate: false,
+          enableAutoRotate: true,
           zoomSpeed: 1,
         }}
         animations={animations}
