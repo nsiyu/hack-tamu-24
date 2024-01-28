@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { SiAmericanairlines } from "react-icons/si";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const TravelPlan = ({ plan }) => {
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
 
   const toggleDetails = () => {
     setIsActive((prev) => !prev);
+    navigate("/app/itinerary");
   };
 
   const planDetailsStyle = {

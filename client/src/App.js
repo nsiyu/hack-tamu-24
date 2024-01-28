@@ -10,6 +10,7 @@ import Statistic from "./components/Statistic";
 import { Flex } from "antd";
 import InterestPage from "./components/InterestPage";
 import TravelPlanPage from "./components/TravelPlanPage";
+import ItineraryPage from "./components/ItineraryPage";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -65,6 +66,7 @@ function App() {
         />
         <Route path="places-to-visit" element={<InterestPage />} />
         <Route path="travel-plan" element={<TravelPlanPage />} />
+        <Route path="itinerary" element={<ItineraryPage />} />
       </Route>
     </Routes>
   );
