@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import Statistic from "./components/Statistic";
 import { Flex } from "antd";
 import InterestPage from "./components/InterestPage";
-import TravelPlan from "./components/GeneratePlan/GeneratePlan";
+import TravelPlanPage from "./components/TravelPlanPage";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -64,20 +64,7 @@ function App() {
           }
         />
         <Route path="places-to-visit" element={<InterestPage />} />
-        <Route
-          path="travel-plan"
-          element={
-            <TravelPlan
-              plan={{
-                airlineLogo: "./placeholder_airline1.png",
-                airportOrder: "DAL → LAX → HNL",
-                departureTime: "09:00 AM",
-                arrivalTime: "11:00 PM",
-                duration: "5",
-              }}
-            />
-          }
-        />
+        <Route path="travel-plan" element={<TravelPlanPage />} />
       </Route>
     </Routes>
   );
