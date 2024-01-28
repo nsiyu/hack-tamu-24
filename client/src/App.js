@@ -3,7 +3,7 @@ import MyFlightsPage from "./components/MyFlightsPage";
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Root from "./Root";
-import SignUp from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
 
 function App() {
   const [globeMarkers, setGlobeMarkers] = useState([]);
@@ -39,7 +39,7 @@ function App() {
       <Route
         path="/"
         element={
-        <SignUp/>
+        <Login/>
         }
       >
         <Route
