@@ -3,13 +3,14 @@ import { DatePicker, Flex, Layout, Icon, Card, Button } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { Footer } from "antd/es/layout/layout";
+import { useNavigate } from "react-router-dom";
 
 const onChange = (date, dateString) => {
   console.log(date, dateString);
 };
 
 const SelectDate = () => {
-
+  const navigate = useNavigate();
   const [loadings, setLoadings] = useState([]);
   const enterLoading = (index) => {
     setLoadings((prevLoadings) => {
@@ -25,10 +26,11 @@ const SelectDate = () => {
         return newLoadings;
       });
     }, 6000);
+
+    navigate("/app/travel-plan");
   };
 
   return (
-    
     <Card bordered={true}>
       <Flex justify="space-between">
         <Flex justify="space-between">
@@ -38,7 +40,11 @@ const SelectDate = () => {
             onChange={onChange}
           />
           <ArrowRightOutlined style={{ marginRight: "10px" }} />
-          <DatePicker placeholder="End Date" onChange={onChange} style={{ marginRight: "10px" }} />
+          <DatePicker
+            placeholder="End Date"
+            onChange={onChange}
+            style={{ marginRight: "10px" }}
+          />
         </Flex>
         <Button
           type="primary"
@@ -49,7 +55,6 @@ const SelectDate = () => {
         </Button>
       </Flex>
     </Card>
-    
   );
 };
 
