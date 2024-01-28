@@ -39,13 +39,12 @@ function App() {
       <Route
         path="/"
         element={
-          // <Root globeMarkers={globeMarkers} globeAnimations={globeAnimations} />
-          <SignUp/>
+          <Root globeMarkers={globeMarkers} globeAnimations={globeAnimations} />
         }
       >
         <Route
           path=""
-          // element={<MyFlightsPage onFlightClick={handleFlightClick} />}
+          element={<MyFlightsPage onFlightClick={handleFlightClick} />}
         />
       </Route>
     </Routes>
