@@ -76,7 +76,7 @@ class PassportDataResource(Resource):
             flight_id = flight['flight_id']
             flight_iata = ''.join(filter(str.isalpha, flight_id))
             flight_number = ''.join(filter(str.isdigit, flight_id))
-            aviation_api_url = f'http://api.aviationstack.com/v1/flights?access_key=7d6bfda8c1ac3076eed6cf5e6fac6985&flight_number={flight_number}&airline_iata={flight_iata}'
+            aviation_api_url = f'http://api.aviationstack.com/v1/flights?access_key=689292887ba553a4fa0c4a56e93e5f35&flight_number={flight_number}&airline_iata={flight_iata}'
             try:
                 aviation_api_response = requests.get(aviation_api_url).json()
                 departure_airport = aviation_api_response['data'][0]['departure']['iata']
